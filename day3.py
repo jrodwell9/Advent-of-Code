@@ -19,3 +19,18 @@ for bag in parsed_data:
     total += sum(map(lambda x: priority_map[x], common))
     
 print(total)   
+
+###################### PART 2 ###########################
+
+total = 0
+
+start_index = 0
+end_index = 3
+for _ in range(0, len(parsed_data)//3):
+    group = [{i for i in bag} for bag in parsed_data[start_index:end_index]]
+    badge = list(group[0].intersection(group[1]).intersection(group[2]))[0]
+    total += priority_map[badge]
+    start_index += 3
+    end_index += 3
+
+print(total)
